@@ -16,9 +16,14 @@ async def list_users(
     db: AsyncIOMotorDatabase = Depends(get_db),
     current_user: dict = Depends(get_current_user),
 ):
-    """List all users - available to all authenticated users for member management."""
-    cursor = db["users"].find({"is_active": True})
-    return await cursor.to_list(length=100)
+    """List users - Admins see all, Taskers only see themselves."""
+    if current_user.get("active_role") == models.UserRole.ADMIN:
+        cursor = db["users"].find({"is_active": True})
+        return await cursor.to_list(length=100)
+    
+    # Taskers only see their own record
+    user = await db["users"].find_one({"id": current_user["id"]})
+    return [user] if user else []
 
 
 @router.get("/{user_id}", response_model=schemas.UserOut)
