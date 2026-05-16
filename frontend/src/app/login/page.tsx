@@ -117,14 +117,11 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <div className="divider" style={{ margin: "24px 0" }} />
-
-          <p style={{ textAlign: "center", fontSize: "0.875rem", color: "rgba(57,88,134,0.7)" }}>
-            Don&apos;t have an account?{" "}
-            <Link href="/signup" style={{ color: "#628ECB", fontWeight: 600, textDecoration: "none" }}>
-              Sign up
-            </Link>
-          </p>
+          <div style={{ marginTop: 24, textAlign: "center" }}>
+            <p style={{ fontSize: "0.875rem", color: "rgba(57,88,134,0.5)", fontStyle: "italic" }}>
+              Private workspace — Access by invitation only
+            </p>
+          </div>
         </div>
       </div>
     </div>

@@ -18,12 +18,10 @@ router = APIRouter(prefix="/auth", tags=["Authentication"])
 
 @router.post("/signup", response_model=schemas.TokenResponse, status_code=status.HTTP_201_CREATED)
 async def signup(payload: schemas.UserCreate, db: AsyncIOMotorDatabase = Depends(get_db)):
-    existing = await db["users"].find_one({"email": payload.email})
-    if existing:
-        raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT,
-            detail="Email already registered",
-        )
+    raise HTTPException(
+        status_code=status.HTTP_403_FORBIDDEN,
+        detail="Public registration is disabled. Please contact your administrator.",
+    )
 
     # Validate role
     try:
