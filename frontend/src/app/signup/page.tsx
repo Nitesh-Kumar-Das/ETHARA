@@ -7,6 +7,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { Eye, EyeOff, UserPlus, Mail, Lock, User } from "lucide-react";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { UserRole } from "@/types";
 
 export default function SignupPage() {
   const { signup } = useAuth();
@@ -15,7 +16,7 @@ export default function SignupPage() {
     full_name: "",
     email: "",
     password: "",
-    role: "TASKER",
+    role: "TASKER" as UserRole,
   });
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
