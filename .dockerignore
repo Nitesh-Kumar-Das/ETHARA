@@ -1,0 +1,26 @@
+# Git
+.git
+.gitignore
+
+# Environments
+.env
+.env.local
+
+# Backend
+backend/venv
+backend/__pycache__
+backend/*.pyc
+
+# Frontend
+frontend/node_modules
+frontend/.next
+frontend/out
+frontend/.vercel
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
