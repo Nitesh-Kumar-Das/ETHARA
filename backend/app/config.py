@@ -33,7 +33,7 @@ class Settings(BaseSettings):
 
     # Server
     BACKEND_HOST: str = "0.0.0.0"
-    BACKEND_PORT: int = 8000
+    BACKEND_PORT: int = int(os.getenv("PORT", 8000))
     FRONTEND_PORT: int = 3000
 
     # App
