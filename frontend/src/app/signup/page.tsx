@@ -7,7 +7,6 @@ import { useAuth } from "@/contexts/AuthContext";
 import { Eye, EyeOff, UserPlus, Mail, Lock, User } from "lucide-react";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { UserRole } from "@/types";
 
 export default function SignupPage() {
   const { signup } = useAuth();
@@ -16,7 +15,7 @@ export default function SignupPage() {
     full_name: "",
     email: "",
     password: "",
-    role: "TASKER" as UserRole,
+    role: "TASKER",
   });
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -126,19 +125,6 @@ export default function SignupPage() {
                   {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
               </div>
-            </div>
-
-            <div>
-              <label className="form-label">Role</label>
-              <select
-                id="signup-role"
-                className="glass-select"
-                value={form.role}
-                onChange={(e) => setForm({ ...form, role: e.target.value as UserRole })}
-              >
-                <option value="TASKER">Tasker — Update task statuses</option>
-                <option value="ADMIN">Admin — Full project management</option>
-              </select>
             </div>
 
             <button id="signup-submit" type="submit" className="glass-button" disabled={isLoading} style={{ width: "100%", padding: "13px", marginTop: 6, fontSize: "0.95rem" }}>
